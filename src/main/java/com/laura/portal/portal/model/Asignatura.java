@@ -2,22 +2,11 @@ package com.laura.portal.portal.model;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Transient;
-
-@Entity
 public class Asignatura {
 
-    @Id
     private String codigo;
     private String descripcion;
 
-    @Transient
-    private boolean alumno;
-
-    @ManyToMany(mappedBy = "asignaturas")
     private List<Alumno> alumnos;
 
     public Asignatura() {
@@ -54,14 +43,6 @@ public class Asignatura {
 
     public void setAlumnos(List<Alumno> alumnos) {
         this.alumnos = alumnos;
-    }
-
-    public boolean tieneAlumno() {
-        return alumno;
-    }
-
-    public void setAlumno(boolean alumno) {
-        this.alumno = alumno;
     }
 
     @Override

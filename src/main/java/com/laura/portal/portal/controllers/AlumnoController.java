@@ -63,29 +63,12 @@ public class AlumnoController {
 
     @GetMapping(path = { "/edit/{codigo}" })
     public ModelAndView edit(
-            @PathVariable(name = "codigo", required = true) int codigo) {
+            @PathVariable(name = "codigo", required = true) int codigo, @RequestParam("alu") String[] asignatura) {
 
         Alumno alumno = alumnosService.findByID(codigo);
-        List<Asignatura> asignaturas = asignaturasService.findAll();
-        List <Asignatura> asignaturasAlumno = alumno.getAsignaturas();
-
-        for(Asignatura asignatura : asignaturas) {
-            for(Asignatura asigAlu : asignaturasAlumno) {
-                if(asignatura.getCodigo() == asigAlu.getCodigo()) {
-                    asignatura.setAlumno(true);
-
-                    break;
-                } else {
-                    asignatura.setAlumno(false);
-                }
-            }
-        }
-
-        alumno.setAsignaturas(asignaturasAlumno);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("alumno", alumno);
-        modelAndView.addObject("asignaturas", asignaturas);
         modelAndView.setViewName("alumnos/edit");
         return modelAndView;
     }

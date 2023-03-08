@@ -2,18 +2,8 @@ package com.laura.portal.portal.model;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-
-@Entity
 public class Alumno {
 
-    @Id
-    @GeneratedValue
     private int codigo;
     private String nombre;
     private String apellidos;
@@ -21,8 +11,6 @@ public class Alumno {
     private String fechaNacimiento;
     private String telefono;
 
-    @ManyToMany()
-    @JoinTable(name = "alumno_asignatura", joinColumns = @JoinColumn(name = "alumno_id"), inverseJoinColumns = @JoinColumn(name = "asignatura_id"))
     private List<Asignatura> asignaturas;
 
     public Alumno(int codigo) {
