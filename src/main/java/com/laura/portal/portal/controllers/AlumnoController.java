@@ -1,7 +1,6 @@
 package com.laura.portal.portal.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.laura.portal.portal.model.Alumno;
-import com.laura.portal.portal.model.Asignatura;
 import com.laura.portal.portal.services.AlumnosService;
 import com.laura.portal.portal.services.AsignaturasService;
 
@@ -78,22 +76,6 @@ public class AlumnoController {
 
         alumnosService.findByID(alumno.getCodigo());
 
-        List<Asignatura> asignaturas = asignaturasService.findAll();
-        List<Asignatura> asignaturasAlu = new ArrayList<Asignatura>();
-
-        for (Asignatura asignatura : asignaturas){
-            for (int i = 0; i < checkboxValue.length; i++){
-                String valor = checkboxValue[i];
-
-                if (asignatura.getCodigo() == valor){
-                    asignaturasAlu.add(asignatura);
-                    
-                    break;
-                }
-            }
-        }
-
-        alumno.setAsignaturas(asignaturasAlu);
         alumnosService.update(alumno);
 
         ModelAndView modelAndView = new ModelAndView();
