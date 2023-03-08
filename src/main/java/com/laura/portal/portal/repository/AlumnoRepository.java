@@ -1,9 +1,0 @@
-package com.laura.portal.portal.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.laura.portal.portal.model.Alumno;
-
-public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
-    
-}
