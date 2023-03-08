@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="commons/header :: header" />
+
+<body>
+    <div th:replace="commons/menu :: menu" />
+
+    <div class="container">
+        <main>
+
+            <div class="row g-5">
+                <div class="col-8">
+                    <h4 class="mb-3">Datos Asignatura</h4>
+
+                    <form class="needs-validation" method="post" th:action="@{/asignaturas/save}" novalidate>
+                        <div class="row g-4">
+                            <div class="col-sm-6">
+                                <label for="codigo" class="form-label">Código</label>
+                                <input type="text" class="form-control" id="codigo" name="codigo" th:value="${asignatura.codigo}">
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-sm-6">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion" th:value="${asignatura.descripcion}">
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="col-sm-12">
+                            <div class="btn-group">
+                                <button class="btn btn-success" type="submit">Crear</button>
+                                <a th:href="@{/asignaturas/list}" href="list.html" class="btn btn-danger">Cancelar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <div th:replace="commons/footer :: footer" class="container"></div>
+
+</body>
+
+</html>
